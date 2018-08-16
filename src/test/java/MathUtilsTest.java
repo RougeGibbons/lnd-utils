@@ -1,35 +1,36 @@
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import ru.rougegibbons.landsanddungeons.utils.functions.MathUtils;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class MathUtilsTest {
     @Test
     public void trimMinTestInt() {
         final Integer min = 0;
         final Integer biggerValue = 50;
-        assertEquals("bigger value shall not be trimmed",
-                biggerValue, MathUtils.trimMin(biggerValue, min));
+        assertEquals(biggerValue, MathUtils.trimMin(biggerValue, min),
+                "bigger value shall not be trimmed");
         final Integer smallerValue = -1;
-        assertEquals("smaller value shall be trimmed",
-                min, MathUtils.trimMin(smallerValue, min));
+        assertEquals(min, MathUtils.trimMin(smallerValue, min),
+                "smaller value shall be trimmed");
         final Integer equalValue = 0;
-        assertEquals("equal value shall be returned",
-                equalValue, MathUtils.trimMin(equalValue, min));
+        assertEquals(equalValue, MathUtils.trimMin(equalValue, min),
+                "equal value shall be returned");
     }
 
     @Test
     public void trimMaxTestInt() {
         final Integer max = 100;
         final Integer biggerValue = 500;
-        assertEquals("bigger value shall be trimmed",
-                max, MathUtils.trimMax(biggerValue, max));
+        assertEquals(max, MathUtils.trimMax(biggerValue, max),
+                "bigger value shall be trimmed");
         final Integer smallerValue = 50;
-        assertEquals("smaller value shall not be trimmed",
-                smallerValue, MathUtils.trimMax(smallerValue, max));
+        assertEquals(smallerValue, MathUtils.trimMax(smallerValue, max),
+                "smaller value shall not be trimmed");
         final Integer equalValue = 100;
-        assertEquals("equal value shall be returned",
-                equalValue, MathUtils.trimMax(equalValue, max));
+        assertEquals(equalValue, MathUtils.trimMax(equalValue, max),
+                "equal value shall be returned");
     }
 
     @Test
@@ -37,54 +38,54 @@ public final class MathUtilsTest {
         final Integer min = 0;
         final Integer max = 100;
         final Integer betweenValue = 50;
-        assertEquals("value between boundaries shall not be clamped",
-                betweenValue, MathUtils.clamp(betweenValue, min, max));
+        assertEquals(betweenValue, MathUtils.clamp(betweenValue, min, max),
+                "value between boundaries shall not be clamped");
         final Integer lowerValue = -1;
-        assertEquals("lower values shall be clamped to minimum",
-                min, MathUtils.clamp(lowerValue, min, max));
+        assertEquals(min, MathUtils.clamp(lowerValue, min, max),
+                "lower values shall be clamped to minimum");
         final Integer biggerValue = 150;
-        assertEquals("bigger values shall be clamped to maximum",
-                max, MathUtils.clamp(biggerValue, min, max));
+        assertEquals(max, MathUtils.clamp(biggerValue, min, max),
+                "bigger values shall be clamped to maximum");
         final Integer minEqualValue = 0;
-        assertEquals("values equal to boundaries shall not be clamped",
-                minEqualValue, MathUtils.clamp(minEqualValue, min, max));
+        assertEquals(minEqualValue, MathUtils.clamp(minEqualValue, min, max),
+                "values equal to boundaries shall not be clamped");
         final Integer maxEqualValue = 100;
-        assertEquals("values equal to boundaries shall not be clamped",
-                maxEqualValue, MathUtils.clamp(maxEqualValue, min, max));
+        assertEquals(maxEqualValue, MathUtils.clamp(maxEqualValue, min, max),
+                "values equal to boundaries shall not be clamped");
     }
 
     @Test
     public void trimMinTestFloat() {
         final Float min = 0.0f;
         final Float biggerValue = 10.0f;
-        assertEquals("bigger value shall not be trimmed",
-                biggerValue, MathUtils.trimMin(biggerValue, min));
+        assertEquals(biggerValue, MathUtils.trimMin(biggerValue, min),
+                "bigger value shall not be trimmed");
         final Float smallerValue = -1.0f;
-        assertEquals("smaller value shall be trimmed",
-                min, MathUtils.trimMin(smallerValue, min));
+        assertEquals(min, MathUtils.trimMin(smallerValue, min),
+                "smaller value shall be trimmed");
         final Float equalValue = 0.0000f;
-        assertEquals("equal value shall be returned",
-                equalValue, MathUtils.trimMin(equalValue, min));
+        assertEquals(equalValue, MathUtils.trimMin(equalValue, min),
+                "equal value shall be returned");
         final Float equalValueTwo = 0.0000000001f;
-        assertEquals("equal value shall be returned",
-                equalValueTwo, MathUtils.trimMin(equalValueTwo, min));
+        assertEquals(equalValueTwo, MathUtils.trimMin(equalValueTwo, min),
+                "equal value shall be returned");
     }
 
     @Test
     public void trimMaxTestFloat() {
         final Float max = 1.0f;
         final Float biggerValue = 5.0f;
-        assertEquals("bigger value shall be trimmed",
-                max, MathUtils.trimMax(biggerValue, max));
+        assertEquals(max, MathUtils.trimMax(biggerValue, max),
+                "bigger value shall be trimmed");
         final Float smallerValue = 0.5f;
-        assertEquals("smaller value shall not be trimmed",
-                smallerValue, MathUtils.trimMax(smallerValue, max));
+        assertEquals(smallerValue, MathUtils.trimMax(smallerValue, max),
+                "smaller value shall not be trimmed");
         final Float equalValue = 1.00f;
-        assertEquals("equal value shall be returned",
-                equalValue, MathUtils.trimMax(equalValue, max));
+        assertEquals(equalValue, MathUtils.trimMax(equalValue, max),
+                "equal value shall be returned");
         final Float equalValueTwo = 1.000000000001f;
-        assertEquals("equal value shall be returned",
-                equalValue, MathUtils.trimMax(equalValueTwo, max));
+        assertEquals(equalValue, MathUtils.trimMax(equalValueTwo, max),
+                "equal value shall be returned");
     }
 
     @Test
@@ -92,22 +93,22 @@ public final class MathUtilsTest {
         final Float min = 0.0f;
         final Float max = 1.0f;
         final Float betweenValue = 0.5f;
-        assertEquals("value between boundaries shall not be clamped",
-                betweenValue, MathUtils.clamp(betweenValue, min, max));
+        assertEquals(betweenValue, MathUtils.clamp(betweenValue, min, max),
+                "value between boundaries shall not be clamped");
         final Float lowerValue = -1.5f;
-        assertEquals("lower values shall be clamped to minimum",
-                min, MathUtils.clamp(lowerValue, min, max));
+        assertEquals(min, MathUtils.clamp(lowerValue, min, max),
+                "lower values shall be clamped to minimum");
         final Float biggerValue = 1.5f;
-        assertEquals("bigger values shall be clamped to maximum",
-                max, MathUtils.clamp(biggerValue, min, max));
+        assertEquals(max, MathUtils.clamp(biggerValue, min, max),
+                "bigger values shall be clamped to maximum");
         final Float minEqualValue = 0.0f;
-        assertEquals("values equal to boundaries shall not be clamped",
-                minEqualValue, MathUtils.clamp(minEqualValue, min, max));
+        assertEquals(minEqualValue, MathUtils.clamp(minEqualValue, min, max),
+                "values equal to boundaries shall not be clamped");
         final Float maxEqualValue = 1.0f;
-        assertEquals("values equal to boundaries shall not be clamped",
-                maxEqualValue, MathUtils.clamp(maxEqualValue, min, max));
+        assertEquals(maxEqualValue, MathUtils.clamp(maxEqualValue, min, max),
+                "values equal to boundaries shall not be clamped");
         final Float minDiffLowValue = min - 0.0000000000000001f;
-        assertEquals("minimal float point difference shall not be clamped",
-                minDiffLowValue, MathUtils.clamp(minDiffLowValue, min, max));
+        assertEquals(minDiffLowValue, MathUtils.clamp(minDiffLowValue, min, max),
+                "minimal float point difference shall not be clamped");
     }
 }

@@ -14,8 +14,7 @@ public final class MathUtils {
      * @param value - value to be estimated
      * @param min   - lower boundary
      * @param max   - upper boundary
-     * @return value if it is in [min; max] range, min
-     *    if value is lower than min or max if value is bigger than max.
+     * @return value if it is in [min; max] range, min if value is lower than min or max if value is bigger than max.
      */
     public static @NotNull Integer clamp(@NotNull Integer value,
                                          @NotNull Integer min,
@@ -30,8 +29,7 @@ public final class MathUtils {
      * @param value - value to be estimated
      * @param min   - lower boundary
      * @param max   - upper boundary
-     * @return value if it is in [min; max] range, min
-     *  if value is lower than min or max if value is bigger than max.
+     * @return value if it is in [min; max] range, min if value is lower than min or max if value is bigger than max.
      */
     public static @NotNull Float clamp(@NotNull Float value,
                                        @NotNull Float min,

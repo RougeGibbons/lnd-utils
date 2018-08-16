@@ -1,84 +1,84 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ru.rougegibbons.landsanddungeons.utils.functions.FloatComparator;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public final class FloatComparatorTest {
     @Test
     public void compareTest() {
         final Float lhsOne = 1.0f;
         final Float rhsOne = 2.0f;
-        assertEquals("lhs shall be less than rhs",
-                FloatComparator.LESS_CODE,
-                FloatComparator.compare(lhsOne, rhsOne).intValue());
-        assertEquals("lhs shall be more than lhs",
-                FloatComparator.MORE_CODE,
-                FloatComparator.compare(rhsOne, lhsOne).intValue());
+        assertEquals(FloatComparator.LESS_CODE,
+                FloatComparator.compare(lhsOne, rhsOne).intValue(),
+                "lhs shall be less than rhs");
+        assertEquals(FloatComparator.MORE_CODE,
+                FloatComparator.compare(rhsOne, lhsOne).intValue(),
+                "lhs shall be more than lhs");
         final Float rhsTwo = 1.00000f;
-        assertEquals("lhs shall be equal to rhs",
-                FloatComparator.EQUAL_CODE,
-                FloatComparator.compare(lhsOne, rhsTwo).intValue());
+        assertEquals(FloatComparator.EQUAL_CODE,
+                FloatComparator.compare(lhsOne, rhsTwo).intValue(),
+                "lhs shall be equal to rhs");
         final Float lhsTwo = 1.00001f;
-        assertEquals("lhs shall be equal to rhs (weak difference)",
-                FloatComparator.EQUAL_CODE,
-                FloatComparator.compare(lhsTwo, rhsTwo).intValue());
+        assertEquals(FloatComparator.EQUAL_CODE,
+                FloatComparator.compare(lhsTwo, rhsTwo).intValue(),
+                "lhs shall be equal to rhs (weak difference)");
         final Float lhsThree = 1.0001f;
-        assertEquals("lhs shall be more than rhs (weak difference)",
-                FloatComparator.MORE_CODE,
-                FloatComparator.compare(lhsThree, rhsTwo).intValue());
-        assertEquals("lhs shall be more than rhs (weak difference)",
-                FloatComparator.MORE_CODE,
-                FloatComparator.compare(lhsThree, lhsTwo).intValue());
+        assertEquals(FloatComparator.MORE_CODE,
+                FloatComparator.compare(lhsThree, rhsTwo).intValue(),
+                "lhs shall be more than rhs (weak difference)");
+        assertEquals(FloatComparator.MORE_CODE,
+                FloatComparator.compare(lhsThree, lhsTwo).intValue(),
+                "lhs shall be more than rhs (weak difference)");
     }
 
     @Test
     public void areEqualTest() {
         final Float lhsOne = 1.0f;
         final Float rhsOne = 2.0f;
-        assertFalse("lhs shall not be equal to rhs",
-                FloatComparator.areEqual(lhsOne, rhsOne));
+        assertFalse(FloatComparator.areEqual(lhsOne, rhsOne),
+                "lhs shall not be equal to rhs");
         final Float rhsTwo = 1.00000f;
-        assertTrue("lhs shall be equal to rhs",
-                FloatComparator.areEqual(lhsOne, rhsTwo));
+        assertTrue(FloatComparator.areEqual(lhsOne, rhsTwo),
+                "lhs shall be equal to rhs");
         final Float lhsTwo = 1.00001f;
-        assertTrue("lhs shall be equal to rhs (weak difference)",
-                FloatComparator.areEqual(lhsTwo, rhsTwo));
+        assertTrue(FloatComparator.areEqual(lhsTwo, rhsTwo),
+                "lhs shall be equal to rhs (weak difference)");
         final Float lhsThree = 1.0001f;
-        assertFalse("lhs shall not be equal to rhs (weak difference)",
-                FloatComparator.areEqual(lhsThree, rhsTwo));
+        assertFalse(FloatComparator.areEqual(lhsThree, rhsTwo),
+                "lhs shall not be equal to rhs (weak difference)");
     }
 
     @Test
     public void isLessTest() {
         final Float lhsOne = 1.0f;
         final Float rhsOne = 2.0f;
-        assertTrue("lhs shall be less than rhs",
-                FloatComparator.isLess(lhsOne, rhsOne));
+        assertTrue(FloatComparator.isLess(lhsOne, rhsOne),
+                "lhs shall be less than rhs");
         final Float rhsTwo = 1.00000f;
-        assertFalse("lhs shall be equal to rhs",
-                FloatComparator.isLess(lhsOne, rhsTwo));
+        assertFalse(FloatComparator.isLess(lhsOne, rhsTwo),
+                "lhs shall be equal to rhs");
         final Float lhsTwo = 1.00001f;
-        assertFalse("lhs shall be equal to rhs (weak difference)",
-                FloatComparator.isLess(lhsTwo, rhsTwo));
+        assertFalse(FloatComparator.isLess(lhsTwo, rhsTwo),
+                "lhs shall be equal to rhs (weak difference)");
         final Float lhsThree = 1.0001f;
-        assertTrue("lhs shall be less than rhs (weak difference)",
-                FloatComparator.isLess(rhsTwo, lhsThree));
+        assertTrue(FloatComparator.isLess(rhsTwo, lhsThree),
+                "lhs shall be less than rhs (weak difference)");
     }
 
     @Test
     public void isGreaterTest() {
         final Float lhsOne = 1.0f;
         final Float rhsOne = 2.0f;
-        assertTrue("lhs shall not be greater than rhs",
-                FloatComparator.isGreater(rhsOne, lhsOne));
+        assertTrue(FloatComparator.isGreater(rhsOne, lhsOne),
+                "lhs shall not be greater than rhs");
         final Float rhsTwo = 1.00000f;
-        assertFalse("lhs shall be equal to rhs",
-                FloatComparator.isGreater(lhsOne, rhsTwo));
+        assertFalse(FloatComparator.isGreater(lhsOne, rhsTwo),
+                "lhs shall be equal to rhs");
         final Float lhsTwo = 1.00001f;
-        assertFalse("lhs shall be equal to rhs (weak difference)",
-                FloatComparator.isGreater(lhsTwo, rhsTwo));
+        assertFalse(FloatComparator.isGreater(lhsTwo, rhsTwo),
+                "lhs shall be equal to rhs (weak difference)");
         final Float lhsThree = 1.0001f;
-        assertTrue("lhs shall be greater than rhs (weak difference)",
-                FloatComparator.isGreater(lhsThree, rhsTwo));
+        assertTrue(FloatComparator.isGreater(lhsThree, rhsTwo),
+                "lhs shall be greater than rhs (weak difference)");
     }
 }

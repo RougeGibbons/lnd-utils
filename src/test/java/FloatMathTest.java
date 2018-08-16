@@ -1,45 +1,45 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ru.rougegibbons.landsanddungeons.utils.functions.FloatMath;
 
-import static junit.framework.TestCase.fail;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public final class FloatMathTest {
     @Test
     public void addTest() {
         final Float lhsOne = 1.0f;
         final Float expected = 2.0f;
-        assertEquals("doubled value expected",
-                expected, FloatMath.add(lhsOne, lhsOne));
+        assertEquals(expected, FloatMath.add(lhsOne, lhsOne),
+                "doubled value expected");
         final Float smallAdd = 0.00001f;
-        assertEquals("small digit addition shall not change the value",
-                lhsOne, FloatMath.add(lhsOne, smallAdd));
+        assertEquals(lhsOne, FloatMath.add(lhsOne, smallAdd),
+                "small digit addition shall not change the value");
     }
 
     @Test
     public void subtractTest() {
         final Float lhsOne = 2.0f;
         final Float rhsOne = 1.0f;
-        assertEquals("halved value expected",
-                rhsOne, FloatMath.subtract(lhsOne, rhsOne));
+        assertEquals(rhsOne, FloatMath.subtract(lhsOne, rhsOne),
+                "halved value expected");
         final Float smallSubtract = 0.00001f;
-        assertEquals("small digit subtraction shall not change the minuend",
-                lhsOne, FloatMath.subtract(lhsOne, smallSubtract));
+        assertEquals(lhsOne, FloatMath.subtract(lhsOne, smallSubtract),
+                "small digit subtraction shall not change the minuend");
     }
 
     @Test
     public void multiplyTest() {
         final Float lhsOne = 2.0f;
         final Float square = 4.0f;
-        assertEquals("squared value expected",
-                square, FloatMath.multiply(lhsOne, lhsOne));
+        assertEquals(square, FloatMath.multiply(lhsOne, lhsOne),
+                "squared value expected");
         final Float zero = 0.0f;
         final Float smallMultiplier = 0.00001f;
-        assertEquals("small value multiplication shall be considered as zero multiplication",
-                zero, FloatMath.multiply(lhsOne, smallMultiplier));
+        assertEquals(zero, FloatMath.multiply(lhsOne, smallMultiplier),
+                "small value multiplication shall be considered as zero multiplication");
     }
 
     @Test
@@ -47,12 +47,12 @@ public final class FloatMathTest {
         final Float lhsOne = 4.0f;
         final Float rhsOne = 2.0f;
         final Float expected = 2.0f;
-        assertEquals("halved value expected",
-                expected, FloatMath.divide(lhsOne, rhsOne));
+        assertEquals(expected, FloatMath.divide(lhsOne, rhsOne),
+                "halved value expected");
         final Float smallDivisor = 0.00001f;
         final Float zero = 0.0f;
-        assertEquals("small dividend shall be considered as zero",
-                zero, FloatMath.divide(smallDivisor, rhsOne));
+        assertEquals(zero, FloatMath.divide(smallDivisor, rhsOne),
+                "small dividend shall be considered as zero");
         try {
             FloatMath.divide(lhsOne, smallDivisor);
             fail("small divisor shall be considered as zero and throw exception");

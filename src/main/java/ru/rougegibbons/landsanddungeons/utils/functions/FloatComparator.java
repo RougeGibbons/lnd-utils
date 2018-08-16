@@ -22,8 +22,8 @@ public final class FloatComparator {
      * @param lhs - first number to compare.
      * @param rhs - second number to compare.
      * @return 0 if lhs is equal to rhs,
-     *  -1 if lhs is less than rhs,
-     *  1 if lhs is greater than rhs.
+     *    -1 if lhs is less than rhs,
+     *    1 if lhs is greater than rhs.
      */
     public static @NotNull Integer compare(@NotNull Float lhs,
                                            @NotNull Float rhs) {

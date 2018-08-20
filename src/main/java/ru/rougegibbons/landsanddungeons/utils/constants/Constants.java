@@ -13,6 +13,12 @@ public final class Constants {
     public static final float ONE_PERCENT_FLOAT = 0.01f;
     public static final BigDecimal PERCENTAGE_CAP_BD_FLOAT = new BigDecimal("1.0");
     public static final BigDecimal ONE_PERCENT_BD_FLOAT = new BigDecimal("0.01");
+    
+    public static final long ZERO_LONG = 0;
+    public static final int ZERO_INT = 0;
+    public static final float ZERO_FLOAT = 0.0f;
+    
+    public static final String EMPTY_LINE = "";
 
     public static final int DEFAULT_NUMBER_OF_SLOTS_IN_BAG = 20;
 }

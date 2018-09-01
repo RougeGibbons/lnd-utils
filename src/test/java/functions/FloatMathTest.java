@@ -1,3 +1,5 @@
+package functions;
+
 import org.junit.jupiter.api.Test;
 import ru.rougegibbons.landsanddungeons.utils.functions.FloatMath;
 

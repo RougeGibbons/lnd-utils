@@ -68,6 +68,29 @@ public final class FloatArithmeticsProxyImplTest {
                 proxy.divide((float) Constants.WIDE_PERCENTAGE_CAP_INT, (float) Constants.PERCENTAGE_CAP_INT));
     }
 
+    @Test
+    public void percentageModificationTest() {
+        final ArithmeticsProxy.FloatArithmeticsProxy proxy = initProxy();
+        percentageModificationCheck(Constants.ZERO_FLOAT, proxy.modifyByPercentage(
+                Constants.ZERO_FLOAT, Constants.ZERO_INT));
+        percentageModificationCheck(Constants.ZERO_FLOAT, proxy.modifyByPercentage(
+                Constants.ZERO_FLOAT, Constants.ZERO_FLOAT));
+        percentageModificationCheck(Constants.ZERO_FLOAT, proxy.modifyByPercentage(
+                Constants.ZERO_FLOAT, Constants.PERCENTAGE_CAP_INT));
+        percentageModificationCheck(Constants.ZERO_FLOAT, proxy.modifyByPercentage(
+                Constants.ZERO_FLOAT, Constants.PERCENTAGE_CAP_FLOAT));
+        percentageModificationCheck((float) Constants.PERCENTAGE_CAP_INT, proxy.modifyByPercentage(
+                (float) Constants.PERCENTAGE_CAP_INT, Constants.ZERO_FLOAT));
+        percentageModificationCheck((float) Constants.PERCENTAGE_CAP_INT, proxy.modifyByPercentage(
+                (float) Constants.PERCENTAGE_CAP_INT, Constants.ZERO_INT));
+        percentageModificationCheck((float) (Constants.WIDE_PERCENTAGE_CAP_INT
+                + Constants.PERCENTAGE_CAP_INT), proxy.modifyByPercentage(
+                (float) Constants.PERCENTAGE_CAP_INT, (float) Constants.PERCENTAGE_CAP_INT));
+        percentageModificationCheck((float) (Constants.WIDE_PERCENTAGE_CAP_INT
+                + Constants.PERCENTAGE_CAP_INT), proxy.modifyByPercentage(
+                (float) Constants.PERCENTAGE_CAP_INT, Constants.WIDE_PERCENTAGE_CAP_INT));
+    }
+
     private @NotNull ArithmeticsProxy.FloatArithmeticsProxy initProxy() {
         return new FloatArithmeticsProxyImpl();
     }
@@ -98,5 +121,10 @@ public final class FloatArithmeticsProxyImplTest {
     private void divideCheck(@NotNull Float expected,
                              @NotNull Float result) {
         operationCheck("division ", expected, result);
+    }
+
+    private void percentageModificationCheck(@NotNull Float expected,
+                                             @NotNull Float result) {
+        operationCheck("percentage modification ", expected, result);
     }
 }

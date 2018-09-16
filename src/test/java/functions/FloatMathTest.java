@@ -1,13 +1,14 @@
 package functions;
 
 import org.junit.jupiter.api.Test;
+import ru.rougegibbons.landsanddungeons.utils.constants.Constants;
+import ru.rougegibbons.landsanddungeons.utils.functions.FloatComparator;
 import ru.rougegibbons.landsanddungeons.utils.functions.FloatMath;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public final class FloatMathTest {
     @Test
@@ -62,5 +63,15 @@ public final class FloatMathTest {
             assertThat(e.getMessage(), containsString("/ by zero"));
             assertThat(e, instanceOf(ArithmeticException.class));
         }
+    }
+
+    @Test
+    public void toPercentTest() {
+        assertTrue(FloatComparator.areEqual(Constants.ZERO_FLOAT, FloatMath.toPercent(Constants.ZERO_INT)),
+                "0 percents shall be equal to 0.0f");
+        assertTrue(FloatComparator.areEqual(Constants.PERCENTAGE_CAP_FLOAT,
+                FloatMath.toPercent(Constants.PERCENTAGE_CAP_INT)), "100 percents shall be equal to 1.0f");
+        assertTrue(FloatComparator.areEqual(-1 * Constants.PERCENTAGE_CAP_FLOAT,
+                FloatMath.toPercent(-1 * Constants.PERCENTAGE_CAP_INT)), "sign must be preserved.");
     }
 }

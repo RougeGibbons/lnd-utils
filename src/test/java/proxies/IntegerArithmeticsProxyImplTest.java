@@ -61,6 +61,29 @@ public final class IntegerArithmeticsProxyImplTest {
                 proxy.divide(Constants.WIDE_PERCENTAGE_CAP_INT, Constants.PERCENTAGE_CAP_INT));
     }
 
+    @Test
+    public void percentageModificationTest() {
+        final ArithmeticsProxy.IntArithmeticsProxy proxy = initProxy();
+        percentageModificationCheck(Constants.ZERO_INT, proxy.modifyByPercentage(
+                Constants.ZERO_INT, Constants.ZERO_INT));
+        percentageModificationCheck(Constants.ZERO_INT, proxy.modifyByPercentage(
+                Constants.ZERO_INT, Constants.ZERO_FLOAT));
+        percentageModificationCheck(Constants.ZERO_INT, proxy.modifyByPercentage(
+                Constants.ZERO_INT, Constants.PERCENTAGE_CAP_INT));
+        percentageModificationCheck(Constants.ZERO_INT, proxy.modifyByPercentage(
+                Constants.ZERO_INT, Constants.PERCENTAGE_CAP_FLOAT));
+        percentageModificationCheck(Constants.PERCENTAGE_CAP_INT, proxy.modifyByPercentage(
+                Constants.PERCENTAGE_CAP_INT, Constants.ZERO_FLOAT));
+        percentageModificationCheck(Constants.PERCENTAGE_CAP_INT, proxy.modifyByPercentage(
+                Constants.PERCENTAGE_CAP_INT, Constants.ZERO_INT));
+        percentageModificationCheck(Constants.WIDE_PERCENTAGE_CAP_INT
+                + Constants.PERCENTAGE_CAP_INT, proxy.modifyByPercentage(
+                Constants.PERCENTAGE_CAP_INT, (float) Constants.PERCENTAGE_CAP_INT));
+        percentageModificationCheck(Constants.WIDE_PERCENTAGE_CAP_INT
+                + Constants.PERCENTAGE_CAP_INT, proxy.modifyByPercentage(
+                Constants.PERCENTAGE_CAP_INT, Constants.WIDE_PERCENTAGE_CAP_INT));
+    }
+
     private @NotNull ArithmeticsProxy.IntArithmeticsProxy initProxy() {
         return new IntegerArithmeticsProxyImpl();
     }
@@ -90,5 +113,10 @@ public final class IntegerArithmeticsProxyImplTest {
     private void divideCheck(@NotNull Integer expected,
                              @NotNull Integer result) {
         operationCheck("division ", expected, result);
+    }
+
+    private void percentageModificationCheck(@NotNull Integer expected,
+                                             @NotNull Integer result) {
+        operationCheck("percentage modification ", expected, result);
     }
 }

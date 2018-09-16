@@ -1,6 +1,7 @@
 package ru.rougegibbons.landsanddungeons.utils.functions;
 
 import org.jetbrains.annotations.NotNull;
+import ru.rougegibbons.landsanddungeons.utils.constants.Constants;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -70,5 +71,16 @@ public final class FloatMath {
                 RoundingMode.HALF_UP).divide(new BigDecimal(rhs).setScale(
                 FLOAT_MATH_PRECISION, RoundingMode.HALF_UP),
                 FLOAT_MATH_PRECISION, RoundingMode.HALF_UP).floatValue();
+    }
+
+    /**
+     * converts {@link Integer} percent value to {@link Float} representation.
+     *
+     * @param percent - {@link Integer} percentage.
+     * @return {@link Float} percentage.
+     * @since 1.4.7
+     */
+    public static @NotNull Float toPercent(@NotNull Integer percent) {
+        return divide(percent.floatValue(), (float) Constants.PERCENTAGE_CAP_INT);
     }
 }

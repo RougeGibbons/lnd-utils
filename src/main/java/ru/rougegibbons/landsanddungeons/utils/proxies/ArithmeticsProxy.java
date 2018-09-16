@@ -1,6 +1,7 @@
 package ru.rougegibbons.landsanddungeons.utils.proxies;
 
 import org.jetbrains.annotations.NotNull;
+import ru.rougegibbons.landsanddungeons.utils.functions.FloatMath;
 
 /**
  * Wrapper class to do arithmetic operations in generics.
@@ -45,6 +46,30 @@ public interface ArithmeticsProxy<T extends Number> {
      * @return lhs / rhs.
      */
     @NotNull T divide(@NotNull T lhs, @NotNull T rhs);
+
+    /**
+     * modifies source value by given percent.
+     *
+     * @param source  - initial value.
+     * @param percent - percentage.
+     * @return modified value.
+     * @since 1.4.7
+     */
+    default @NotNull T modifyByPercentage(@NotNull T source,
+                                          @NotNull Integer percent) {
+        return modifyByPercentage(source, FloatMath.toPercent(percent));
+    }
+
+    /**
+     * modifies source value by given percent.
+     *
+     * @param source  - initial value.
+     * @param percent - percentage.
+     * @return modified value.
+     * @since 1.4.7
+     */
+    @NotNull T modifyByPercentage(@NotNull T source,
+                                  @NotNull Float percent);
 
     interface IntArithmeticsProxy extends ArithmeticsProxy<Integer> {
 

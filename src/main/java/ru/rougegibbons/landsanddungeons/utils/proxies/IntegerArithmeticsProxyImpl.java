@@ -1,6 +1,8 @@
 package ru.rougegibbons.landsanddungeons.utils.proxies;
 
 import org.jetbrains.annotations.NotNull;
+import ru.rougegibbons.landsanddungeons.utils.constants.Constants;
+import ru.rougegibbons.landsanddungeons.utils.functions.FloatMath;
 
 /**
  * {@link ArithmeticsProxy} interface implementation for {@link Integer} numbers.
@@ -60,5 +62,19 @@ public class IntegerArithmeticsProxyImpl implements ArithmeticsProxy.IntArithmet
     public @NotNull Integer divide(@NotNull Integer lhs,
                                    @NotNull Integer rhs) {
         return lhs / rhs;
+    }
+
+    /**
+     * see {@link ArithmeticsProxy}.
+     *
+     * @param source  - initial value.
+     * @param percent - percentage.
+     * @return modified value.
+     */
+    @Override
+    public @NotNull Integer modifyByPercentage(@NotNull Integer source,
+                                               @NotNull Float percent) {
+        return FloatMath.multiply(source.floatValue(),
+                Constants.PERCENTAGE_CAP_FLOAT + percent).intValue();
     }
 }

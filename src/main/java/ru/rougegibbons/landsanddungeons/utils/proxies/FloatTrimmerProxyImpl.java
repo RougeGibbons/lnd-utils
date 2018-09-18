@@ -18,12 +18,12 @@ public class FloatTrimmerProxyImpl extends TrimmerProxyImpl<Float>
             new FloatComparatorProxyImpl();
 
     /**
-     * see {@link TrimmerProxyImpl} description.
+     * see {@link TrimmerProxy} description.
      *
      * @return {@link ComparatorProxy.FloatComparatorProxy} interface implementation instance.
      */
     @Override
-    protected @NotNull ComparatorProxy.FloatComparatorProxy getComparatorProxy() {
+    public @NotNull ComparatorProxy.FloatComparatorProxy getComparatorProxy() {
         return COMPARATOR_PROXY;
     }
 }

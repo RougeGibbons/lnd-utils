@@ -18,12 +18,12 @@ public class IntegerTrimmerProxyImpl extends TrimmerProxyImpl<Integer>
             new IntegerComparatorProxyImpl();
 
     /**
-     * see {@link TrimmerProxyImpl} description.
+     * see {@link TrimmerProxy} description.
      *
      * @return {@link ComparatorProxy.IntComparatorProxy} interface implementation instance.
      */
     @Override
-    protected @NotNull ComparatorProxy.IntComparatorProxy getComparatorProxy() {
+    public @NotNull ComparatorProxy.IntComparatorProxy getComparatorProxy() {
         return COMPARATOR_PROXY;
     }
 }

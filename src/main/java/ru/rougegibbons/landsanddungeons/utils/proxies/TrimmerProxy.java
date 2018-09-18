@@ -42,6 +42,14 @@ public interface TrimmerProxy<T extends Number> {
                      @NotNull T lowerBoundary,
                      @NotNull T upperBoundary);
 
+    /**
+     * provides access to some {@link ComparatorProxy} interface implementation instance.
+     *
+     * @return {@link ComparatorProxy} interface implementation instance.
+     * @since 1.5.9
+     */
+    @NotNull ComparatorProxy<T> getComparatorProxy();
+
     interface IntTrimmerProxy extends TrimmerProxy<Integer> {
 
     }

@@ -52,11 +52,4 @@ public abstract class TrimmerProxyImpl<T extends Number> implements TrimmerProxy
                             @NotNull T upperBoundary) {
         return trimMax(trimMin(value, lowerBoundary), upperBoundary);
     }
-
-    /**
-     * provides access to some {@link ComparatorProxy} interface implementation instance.
-     *
-     * @return {@link ComparatorProxy} interface implementation instance.
-     */
-    protected abstract @NotNull ComparatorProxy<T> getComparatorProxy();
 }

@@ -18,12 +18,12 @@ public class LongTrimmerProxyImpl extends TrimmerProxyImpl<Long>
             new LongComparatorProxyImpl();
 
     /**
-     * see {@link TrimmerProxyImpl} description.
+     * see {@link TrimmerProxy} description.
      *
      * @return {@link ComparatorProxy.LongComparatorProxy} interface implementation instance.
      */
     @Override
-    protected @NotNull ComparatorProxy.LongComparatorProxy getComparatorProxy() {
+    public @NotNull ComparatorProxy.LongComparatorProxy getComparatorProxy() {
         return COMPARATOR_PROXY;
     }
 }
